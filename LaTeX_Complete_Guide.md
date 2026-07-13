@@ -47,6 +47,7 @@ Nothing you write will show up unless it's between `\begin{document}` and `\end{
 \usepackage{subcaption}             % for figures with sub-parts (1a, 1b, 1c)
 \usepackage{multirow}               % for merged table cells
 \usepackage{hyperref}               % clickable links + reference numbers
+\usepackage{xcolor}                 % for colored text
 ```
 
 ---
@@ -113,6 +114,48 @@ These are "switches" — everything after them changes size until you close the 
 
 Full range, smallest to largest:
 `\tiny`, `\scriptsize`, `\footnotesize`, `\small`, `\normalsize`, `\large`, `\Large`, `\LARGE`, `\huge`, `\Huge`
+
+### Coloring Text
+
+Needs `\usepackage{xcolor}` (already in your preamble block above).
+
+**Colored text:**
+```latex
+\textcolor{red}{This text is red.}
+```
+
+**Built-in color names you can use right away:**
+`red, blue, green, yellow, orange, purple, cyan, magenta, black, white, gray, brown, pink, teal, violet, lime, olive`
+
+**Highlighting text with a background color** (like a marker/highlighter):
+```latex
+\colorbox{yellow}{This text is highlighted.}
+```
+
+**A custom color** (e.g. to match a specific shade) — define it once in the preamble, then reuse the name anywhere:
+```latex
+\definecolor{myblue}{RGB}{30, 100, 200}
+```
+```latex
+\textcolor{myblue}{Custom colored text.}
+```
+
+**Lighter/darker shades of a built-in color, without defining anything new** — add `!` and a percentage:
+```latex
+\textcolor{blue!50}{Lighter blue (50% blue, 50% white)}
+\textcolor{red!70!black}{Darker red (70% red mixed with black)}
+```
+
+**Coloring parts of a math equation:**
+```latex
+$\textcolor{red}{x^2} + \textcolor{blue}{y^2} = z^2$
+```
+
+**Combining a colored background with a bold "Note" label** (a nicer version of the plain bold-label trick from Section 4):
+```latex
+\colorbox{yellow!30}{\parbox{0.9\textwidth}{\textbf{Note:} Lists can be customized.}}
+```
+`\parbox{width}{...}` lets the colored box wrap onto multiple lines instead of only fitting one short phrase.
 
 ---
 
@@ -577,6 +620,9 @@ Paste this whole block into a blank Overleaf project and compile it — this alo
 | Underline | `\underline{...}` |
 | Strikethrough | `\sout{...}` (needs `ulem`) |
 | Font size | `{\Large ...}`, `{\small ...}`, etc. |
+| Colored text | `\textcolor{red}{...}` (needs `xcolor`) |
+| Highlighted text | `\colorbox{yellow}{...}` |
+| Custom color | `\definecolor{name}{RGB}{r,g,b}` |
 | Section | `\section{...}`, `\subsection{...}` |
 | Bullet list | `\begin{itemize} \item ... \end{itemize}` |
 | Numbered list | `\begin{enumerate} \item ... \end{enumerate}` |
